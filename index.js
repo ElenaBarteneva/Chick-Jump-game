@@ -1,10 +1,10 @@
 const board = document.getElementById('board');
-let startGame = false;
 const lastGamesBoard = document.querySelector('.last-games');
 const egg = document.querySelector('.animation-frame');
 const boardWidth = 515;
 const boardHeight = 557;
 let context;
+let startGame = false;
 
 const chickWidth = 90;
 const chickHeight = 90;
