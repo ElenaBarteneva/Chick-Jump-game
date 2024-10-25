@@ -43,7 +43,38 @@ gameOverMusic.volume = 0.2;
 const jumpSound = new Audio('audio/jumping.mp3');
 const chickStartSound = new Audio('audio/chick2.mp3');
 
-window.onload = function() {
+const imgSources = [
+    'img/egg.png',
+    'img/egg2.png',
+    'img/egg3.png',
+    'img/egg4.png',
+    'img/chick1.png',
+    'img/chick2.png',
+    'img/chick2.png',
+    'img/back.png',
+    'img/chick-right.png',
+    'img/chick-left.png',
+    'img/platform.png',
+]
+
+
+function renderImages() {
+    let loadedImgs = 0;
+
+    imgSources.forEach((image) => {
+        let img = document.createElement("img");
+        img.src = image;
+        img.addEventListener('loadeddata', () => {
+            loadedImgs++;
+        if (loadedImgs === imgSources.length) {
+            initGame();
+        }
+    })
+})
+}
+
+
+window.onload = function initGame() {
     egg.addEventListener('click', () => {
         egg.classList.add('animated');
         chickStartSound.play();
@@ -191,7 +222,7 @@ function placePlatforms() {
 
     platformArray.push(platform);
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         const randomX = Math.floor(Math.random() * boardWidth * 3/4);
         let platform = {
             img : platformImg,
